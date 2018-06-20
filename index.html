@@ -11,6 +11,9 @@
 		<!--vue-->
 		<script src="https://cdn.bootcss.com/vue/2.5.17-beta.0/vue.min.js"></script>
 
+		<!--vue-router-->
+		<script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+
 		<!--vue-resource-->
 		<script src="https://cdn.bootcss.com/vue-resource/1.5.1/vue-resource.js"></script>
 
@@ -33,12 +36,42 @@
 	</head>
 
 	<body>
-	<div class="banner">
-	
-					<button v-on:click="greet">1111</button>
-
+		<header>
+			<div id="header" class="container-fluid">
+				<div class="my-logo">
+					<h2>
+						<a href="">Hoo</a>
+					</h2>
 				</div>
-		<div class="container-fluid" id="app" >
+
+				<div class="my-nav">
+					<ul>
+						<li>
+							<a href="">1</a>
+						</li>
+						<li>
+							<a href="">2</a>
+						</li>
+						<li>
+							<a href="">3</a>
+						</li>
+						<li>
+							<a href="">4</a>
+						</li>
+						<li>
+							<a href="">5</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</header>
+		<div class="banner">
+
+			<button v-on:click="greet">1111</button>
+
+		</div>
+
+		<div class="container-fluid" id="app">
 			<div class="row">
 				<!--搜索-->
 				<!--<div class="tets">
@@ -80,17 +113,18 @@
 								<div class="carousel-inner" role="listbox">
 
 									<!--vue渲染轮播图-->
-									<template v-for="(iteam,index) in sjlbt">
-										<div @mouseover.stop="chulaiba($event)" @mouseleave.stop="huiquba($event)" class="item my-lbt-div" :class="[index == 0? 'active': '']" :style="'background-image: url('+iteam.images.medium+') ; background-size: cover;'">
+									<template v-for="(item,index) in sjlbt">
+										<div @mouseover.stop="chulaiba($event)" @mouseleave.stop="huiquba($event)" class="item my-lbt-div" :class="[index == 0? 'active': '']" :style="'background-image: url('+item.images.medium+') ; background-size: cover;'">
 											<!--这里active没有''会失效  注意语义注意语义   : style  后面执行的是js语句  所以要+号-->
-											<img :src="sjlbt[index].images.small" alt="...">
+											<router-link :to="'/id/'+item.id"><img :src="sjlbt[index].images.small" alt="..."></router-link>
+											
 											<div class="carousel-caption">
-												<span>{{iteam.title}}
+												<span>{{item.title}}
 												
 													<lx>
-														类型 ： {{iteam.genres}}<br>
-														上映：{{iteam.year}}<br>
-														得分：{{iteam.rating.average}}<br>
+														类型 ： {{item.genres}}<br>
+														上映：{{item.year}}<br>
+														得分：{{item.rating.average}}<br>
 													</lx>
 												</span>
 											</div>
@@ -114,7 +148,7 @@
 						<!--右边show list-->
 						<div class="col-md-4 col-xs-12 no-p clearfix" id="show-list">
 							<div class="row1">
-								<slt class="col-md-6 col-xs-3" v-for="(iteam,index) in sjsl" :todo="iteam" :key="index"></slt>
+								<slt class="col-md-6 col-xs-4" v-for="(iteam,index) in sjsl" :todo="iteam" :key="index"></slt>
 								<!--<template v-for="(iteam,index) in sjsl">
 									<div class="col-md-6" @mouseover.stop="h1($event)" @mouseleave.stop="h0($event)" >							
 										<img :src="sjsl[index].images.medium" alt="..." class="sl_img">
@@ -134,9 +168,14 @@
 
 						</div>
 					</div>
-
+					<template v-for="(item,index) in sjlbt">
+						<router-link :to="'/id/'+item.id">{{item.title}}</router-link>
+					</template>
+					
+					<router-link to="/id/25971649">Go to Bar</router-link>
+					<router-view></router-view>
 					<!--分页标签-->
-					<div class="col-md-12 col-xs-12 clearfix" id="tabs" style="min-width: 600px;">
+					<div class="col-md-12 col-xs-12 clearfix" id="tabs">
 
 						<!-- Nav tabs -->
 						<ul class="nav nav-tabs" role="tablist">
@@ -158,11 +197,12 @@
 						<div class="tab-content">
 
 							<div role="tabpanel" class="tab-pane active" id="home">
+
 								<slt class="col-md-4 col-xs-4" v-for="(iteam,index) in sjtabs1" :todo="iteam" :key="index">
 									<!--<div name="zi">-->
-										类型 ： {{iteam.genres}}<br> 
-										上映：{{iteam.year}}<br> 
-										得分：{{iteam.rating.average}}<br>
+									类型 ： {{iteam.genres}}<br> 上映：{{iteam.year}}
+									<br> 得分：{{iteam.rating.average}}
+									<br>
 									<!--</div>-->
 								</slt>
 							</div>
@@ -208,6 +248,7 @@
 			<div class="container footer-container">
 				<div class="qinmei-footer-left">
 					<h2>Hoo</h2>
+
 					<div class="footer-left-text">
 						<p>页面纯用vue渲染</p>
 					</div>
@@ -217,27 +258,26 @@
 					</div>
 				</div>
 				<div class="qinmei-footer-right">
-					
+
 					<!--<div class="footer-right-title">官方</div>
 					<div class="footer-right-link">
 						<a href="/info">关于我们</a>
 						<a href="/question">问题反馈</a>-->
-					</div>
-					<!--<div class="footer-right-icon">
+				</div>
+				<!--<div class="footer-right-icon">
 								<a title="微信公众号" class="weixin-icon"><i class="fa fa-weixin" aria-hidden="true"></i>
 									<div class="weixin-icon-img"><img src="https://qinmei.video/wp-content/themes/qinmei/images/weixin.jpg" alt=""></div>
 								</a>
 								<a href="https://jq.qq.com/?_wv=1027&amp;k=5EjZVCO" title="QQ群"><i class="fa fa-qq" aria-hidden="true"></i></a>
 								<a href="mailto:info@qinmei.org" title="邮件"><i class="fa fa-envelope" aria-hidden="true"></i></a>
 							</div>-->
-				</div>
+			</div>
 			</div>
 		</footer>
 		<!--mian-js-->
 		<script type="text/javascript" src="js/vue.js">
 		</script>
 		<script type="text/javascript">
-			
 			//			window.onload = function(){
 			//				
 			//				console.log("123232132")

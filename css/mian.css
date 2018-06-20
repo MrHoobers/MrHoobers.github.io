@@ -14,11 +14,26 @@
     top: -100%;
   }
 }
+a {
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: none;
+}
+header {
+  display: none;
+}
+body {
+  background-color: #f1f1f1;
+}
 sl {
   /*float: left; width: 49%;*/
   margin-bottom: 10px;
   background-color: rgba(234, 234, 234, 0.7);
   border-left: dashed tomato 2px;
+  background-color: white;
+  border-radius: 1vw;
+  overflow: hidden;
 }
 sl img {
   width: 100%;
@@ -105,7 +120,6 @@ sl span {
   /*float: left;
 				width: 49%;*/
   margin-bottom: 10px;
-  background-color: white;
 }
 .container-fluid .row .row1 img {
   width: 100%;
@@ -129,12 +143,18 @@ sl span {
   color: white;
 }
 .container-fluid .row #tabs {
-  margin-top: 10px;
+  margin-top: 15px;
+  background-color: white;
+  border-radius: 1vw;
+  overflow: hidden;
 }
-.container-fluid .row #tabs li.active {
+.container-fluid .row #tabs ul {
+  border-bottom: 5px solid #DDE;
+}
+.container-fluid .row #tabs ul li.active {
   border-bottom: solid 3px #d9534f;
 }
-.container-fluid .row #tabs li a {
+.container-fluid .row #tabs ul li a {
   border: none;
 }
 .container-fluid .row #tabs .tab-content sl {
@@ -144,10 +164,9 @@ sl span {
   background-color: white;
   width: 30%;
   height: 12vw;
-  overflow: hidden;
+  padding: 0px;
 }
 .container-fluid .row #tabs .tab-content sl img {
-  width: auto;
   position: relative;
 }
 .container-fluid .row #tabs .tab-content sl img:hover {
@@ -275,6 +294,44 @@ h2 {
   color: rgba(255, 255, 255, 0.8);
 }
 @media screen and (max-width: 970px) {
+  header {
+    display: block;
+    background-color: #333;
+    height: 50px;
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    z-index: 999;
+  }
+  header .my-logo {
+    float: left;
+    width: 30%;
+  }
+  header .my-logo h2 {
+    margin: 10px;
+  }
+  header .my-logo h2 a {
+    color: white;
+  }
+  header .my-nav ul {
+    width: 70%;
+    float: right;
+    margin-top: 16px;
+    text-align: center;
+    font-size: 16px;
+  }
+  header .my-nav ul li {
+    display: block;
+    float: left;
+    width: 20%;
+  }
+  header .my-nav ul li a {
+    color: white;
+  }
+  .banner {
+    display: none;
+  }
   .container-fluid .row .my-lbt {
     padding: 0px;
   }
@@ -284,11 +341,17 @@ h2 {
   .container-fluid .row .my-lbt .my-lbt-div .carousel-caption span {
     bottom: 8px;
   }
+  .container-fluid .row .row1 {
+    margin-top: 1vw;
+  }
   .container-fluid .row .row1 sl img {
-    height: 24vw;
+    height: 30vw;
   }
   .container-fluid .row .row1 sl span {
-    bottom: 10px ;
+    bottom: 10px;
+  }
+  .container-fluid .row #tabs .tab-content sl {
+    margin: 4px;
   }
   .container-fluid .row #tabs .tab-content sl p {
     display: none;
@@ -299,6 +362,7 @@ h2 {
   #show-list {
     margin-top: 1vw;
     overflow-x: scroll;
+    height: auto;
   }
   sl {
     margin-bottom: 10px;
@@ -309,5 +373,8 @@ h2 {
   }
   #nav {
     display: none;
+  }
+  #app {
+    margin-top: 50px;
   }
 }
