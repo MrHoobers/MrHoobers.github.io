@@ -17,16 +17,14 @@
     }
 }
 
+a {
+    text-decoration: none;
+    &:hover {
+        text-decoration: none;
+    }
+}
 
-a{ 
-text-decoration:none; 
-
- &:hover{
-     text-decoration:none;                    
-                    }
-} 
-
-header{
+header {
     display: none;
 }
 
@@ -78,6 +76,63 @@ sl {
     padding-left: 0px;
 }
 
+#detail {
+    ///路由弹出页面
+    z-index: 1000;
+    position: fixed;
+    left: 0;
+    top: 0;
+    background-color: rgba(0, 0, 0, .7);
+    width: 100%;
+    height: 100%;
+    span {
+        position: absolute;
+        right: 10px;
+        top: 8px;
+        font-size: 22px;
+        z-index: 10001;
+    }
+    .d-d {
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        margin: auto;
+        height: 50%;
+        width: 74%;
+        background-color: white;
+        .d-img {
+            float: left;
+            height: 100%;
+            margin: auto;
+            //background-color: blue;
+            margin: 0;
+            width: 50%;
+            img {
+                margin: 0px 5px 0px 0px;
+                height: 100%;
+                float: right;
+            }
+        }
+        .d-detail {
+            float: right;
+            margin: 0;
+            //background-color: yellow;
+            height: 100%;
+            width: 50%;
+            position: relative;
+            span {
+                position: absolute;
+                font-size: 22px;
+                left: 10px;
+                margin-top: 22px;
+                p {}
+            }
+        }
+    }
+}
+
 #loading {
     padding-top: 10%;
     width: 100%;
@@ -96,8 +151,6 @@ sl {
     background-size: 100% 100%;
     margin-bottom: 1px;
 }
-
-
 
 .container-fluid {
     padding: 0 10%;
@@ -276,6 +329,38 @@ sl {
     display: none
 }
 
+#weixin {
+    position: fixed;
+    left: 15px;
+    top: 50%;
+    width: 1vw;
+    height: 1vw;
+    background-color: black;
+}
+
+#connect {
+    position: fixed;
+    right: 10px;
+    top: 50%;
+    div {
+        div {
+            text-decoration: none;
+            //direction: none;
+            width: 50px;
+            height: 50px;
+            background-color: gold;
+            border: green solid 2px;
+            
+            img {
+                position: absolute;
+                right: 50px;
+                width: 200px;
+//              height: 50px;
+            }
+        }
+    }
+}
+
 footer {
     margin-top: 100px;
     width: 100%;
@@ -293,7 +378,8 @@ h2 {
 
 .qinmei-footer-left {
     float: left;
-    width: 65%;
+    margin-left: 10vw;
+    //width: 65%;
     height: 160px;
     display: flex;
     flex-direction: column;
@@ -363,46 +449,43 @@ h2 {
 ////////////////////////////////////////////////////////////////////////////////
 @media screen and (max-width: 970px) {
     header {
-    display: block;
-    background-color: #333;
-    height: 50px;
-    position: fixed;
-    left: 0px;
-    top: 0px;
-    width: 100%;
-    z-index: 999;
-    .my-logo {
-        h2 {
-            margin: 10px;
-            a{
-                color: white;
-            }
-        }
-        float: left;
-        width: 30%;
-    }
-    .my-nav {
-        ul {
-            width: 70%;
-            float: right;
-            //background-color: #00FFFF;
-            margin-top: 16px;
-            text-align: center;
-            font-size: 16px;
-            
-            li {
-                display: block;
-                float: left;
-                width: 20%;
-                
-                a{
+        display: block;
+        background-color: #333;
+        height: 50px;
+        position: fixed;
+        left: 0px;
+        top: 0px;
+        width: 100%;
+        z-index: 999;
+        .my-logo {
+            h2 {
+                margin: 10px;
+                a {
                     color: white;
-                   
+                }
+            }
+            float: left;
+            width: 30%;
+        }
+        .my-nav {
+            ul {
+                width: 70%;
+                float: right;
+                //background-color: #00FFFF;
+                margin-top: 16px;
+                text-align: center;
+                font-size: 16px;
+                li {
+                    display: block;
+                    float: left;
+                    width: 20%;
+                    a {
+                        color: white;
+                    }
                 }
             }
         }
     }
-}
     .banner {
         display: none;
     }
@@ -484,7 +567,7 @@ h2 {
     #nav {
         display: none;
     }
-    #app{
+    #app {
         margin-top: 50px;
     }
 }

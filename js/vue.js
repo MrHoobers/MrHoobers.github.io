@@ -8,9 +8,25 @@
 // 可以从其他文件 import 进来
 
 var detial = {
-	template: '<div>{{$route.params.id}}</div>',
+	template: `<div id="detail">
+					<div class="d-d">
+						<span class="glyphicon glyphicon-remove" v-on:click="dclose"></span>
+						<div class="d-img"><img :src="app.routerdata.images.medium"/></div>
+						<div class="d-detail">
+							<span>
+								<p>
+									类型 ： {{app.routerdata.genres}}<br>
+									上映：{{app.routerdata.year}}<br>
+									得分：{{app.routerdata.rating.average}}<br>
+								</p>
+							</span>
+						</div>
+					</div>
+				</div>`,
 	methods: {
-
+		dclose:function(){
+			router.push({ path: '/' })
+		},
 	},
 
 }
@@ -64,6 +80,8 @@ var app = new Vue({
 		sjtabs4: [],
 		flag: 0,
 		routerdata: [],
+		wx : 0 ,
+		qq : 0 ,
 	},
 
 	components: {
@@ -161,7 +179,18 @@ var app = new Vue({
 			this.sub_lenth += 1;
 			console.log(this.abc);
 		},
-
+		weixin: function(a){
+			
+			if (a == "qq") {
+				
+				this.qq == 1? this.qq = 0 : this.qq = 1;
+			}else if(a == "wx"){
+				this.wx == 1? this.wx = 0 : this.wx = 1;
+			}
+		    
+			
+		},
+		
 	},
 
 	created: function() {

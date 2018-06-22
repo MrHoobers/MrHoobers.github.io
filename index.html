@@ -36,6 +36,7 @@
 	</head>
 
 	<body>
+
 		<header>
 			<div id="header" class="container-fluid">
 				<div class="my-logo">
@@ -67,11 +68,12 @@
 		</header>
 		<div class="banner">
 
-			<button v-on:click="greet">1111</button>
+			<!--<button v-on:click="greet">1111</button>-->
 
 		</div>
 
 		<div class="container-fluid" id="app">
+			<router-view></router-view>
 			<div class="row">
 				<!--搜索-->
 				<!--<div class="tets">
@@ -117,7 +119,7 @@
 										<div @mouseover.stop="chulaiba($event)" @mouseleave.stop="huiquba($event)" class="item my-lbt-div" :class="[index == 0? 'active': '']" :style="'background-image: url('+item.images.medium+') ; background-size: cover;'">
 											<!--这里active没有''会失效  注意语义注意语义   : style  后面执行的是js语句  所以要+号-->
 											<router-link :to="'/id/'+item.id"><img :src="sjlbt[index].images.small" alt="..."></router-link>
-											
+
 											<div class="carousel-caption">
 												<span>{{item.title}}
 												
@@ -168,12 +170,12 @@
 
 						</div>
 					</div>
-					<template v-for="(item,index) in sjlbt">
+					<!--<template v-for="(item,index) in sjlbt">
 						<router-link :to="'/id/'+item.id">{{item.title}}</router-link>
 					</template>
-					
-					<router-link to="/id/25971649">Go to Bar</router-link>
-					<router-view></router-view>
+
+					<router-link to="/id/25971649">Go to Bar</router-link>-->
+
 					<!--分页标签-->
 					<div class="col-md-12 col-xs-12 clearfix" id="tabs">
 
@@ -228,7 +230,17 @@
 							</div>
 							<div role="tabpanel" class="tab-pane" id="settings">没了哈哈哈</div>
 
-							</sl>
+							<!--微信标签-->
+							<!--<div id="weixin">
+								11111111
+							</div>-->
+							<div id="connect">
+								<div>
+									<div @click="weixin('wx')" style="background-image: url(./img/wx.png) ;">
+										<a href=""></a><img v-show="wx == 1" src="img/ewm.png" /></div>
+									<div @click="window.location.href='tencent://AddContact/?fromId=45&fromSubId=1&subcmd=all&uin=865919337'" style="background-image: url(./img/qq.png) ;"></div>
+								</div>
+							</div>
 						</div>
 
 					</div>
@@ -258,19 +270,20 @@
 					</div>
 				</div>
 				<div class="qinmei-footer-right">
-
+					<img v-show="wx == 1" src="img/ewm.png" / style="width: 200px;">
 					<!--<div class="footer-right-title">官方</div>
 					<div class="footer-right-link">
 						<a href="/info">关于我们</a>
 						<a href="/question">问题反馈</a>-->
 				</div>
-				<!--<div class="footer-right-icon">
-								<a title="微信公众号" class="weixin-icon"><i class="fa fa-weixin" aria-hidden="true"></i>
+				<!--<div class="footer-right-icon">-->
+
+				<!--<a title="微信公众号" class="weixin-icon"><i class="fa fa-weixin" aria-hidden="true"></i>
 									<div class="weixin-icon-img"><img src="https://qinmei.video/wp-content/themes/qinmei/images/weixin.jpg" alt=""></div>
 								</a>
 								<a href="https://jq.qq.com/?_wv=1027&amp;k=5EjZVCO" title="QQ群"><i class="fa fa-qq" aria-hidden="true"></i></a>
-								<a href="mailto:info@qinmei.org" title="邮件"><i class="fa fa-envelope" aria-hidden="true"></i></a>
-							</div>-->
+								<a href="mailto:info@qinmei.org" title="邮件"><i class="fa fa-envelope" aria-hidden="true"></i></a>-->
+				<!--</div>-->
 			</div>
 			</div>
 		</footer>
