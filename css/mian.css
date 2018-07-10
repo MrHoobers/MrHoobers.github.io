@@ -454,4 +454,10 @@ h2 {
   #app {
     margin-top: 50px;
   }
+  .qinmei-footer-right {
+    width: 55%;
+  }
+  .qinmei-footer-right img {
+    width: 150px;
+  }
 }
